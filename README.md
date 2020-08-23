@@ -7,7 +7,7 @@ If you are using R Markdown documents then you have sometimes restrictions about
 library("rmdwc")
 files <- system.file('rmarkdown/rstudio_pdf.Rmd', package="rmdwc")
 rmdcount(files)
-# Within a R markdown document in code chunk
+# Within a R Markdown document in a code chunk
 # ```{r}
 # library("rmdwc")
 # rmdcount()
