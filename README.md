@@ -1,4 +1,4 @@
-# rmdwc #
+# rmdwc 
 
 If you are using R Markdown documents then you have sometimes restrictions about the size of the documents, e.g. number of words, number of characters or non-whitespace characters. rmdcount() computes these counts and returns the result as data frame.
 
@@ -13,6 +13,21 @@ txtcount(files) # include code chunks
 # library("rmdwc")
 # rmdcount()
 # ```
-
 ```
 
+# Installation  
+
+## From CRAN
+
+```R
+install.packages("rmdwc")
+```
+
+## From github
+
+Note that from github you install the current development version.
+
+```R
+library("devtools")
+install_github("sigbertklinke/rmdwc")
+```

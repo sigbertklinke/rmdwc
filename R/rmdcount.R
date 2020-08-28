@@ -13,30 +13,31 @@
 #'
 #' @details We define:
 #' \describe{
-#' \item{Line}{the number of lines. It differs from \code{wc -l} since \code{wc} counts the number of newlines.}
-#' \item{Word}{it is considered to be a character or characters delimited by white space. Libre Office counts differently; see \url{https://bugs.documentfoundation.org/show_bug.cgi?id=55359}{Another Example}.}
+#' \item{Line}{the number of lines. It differs from unix \code{wc -l} since \code{wc} counts the number of newlines.}
+#' \item{Word}{it is considered to be a character or characters delimited by white space. 
+#' Libre Office counts differently; see \url{Another Example}{https://bugs.documentfoundation.org/show_bug.cgi?id=55359}.}
 #' }
 #' 
-#' We use the following approaches to detect words, characters and non-whitespace characters. 
+#' The following approach is used to detect lines, words, characters and non-whitespace characters. 
 #' \describe{
-#' \item{lines}{\code{strsplit(rmd, line)[[1]]} with \code{line} equal to \code{'\n'}}
-#' \item{bytes}{\code{charToRaw(rmd)} with \code{line} equal to \code{'\n'}}
-#' \item{words}{\code{strsplit(rmd, word)[[1]]} with \code{word} equal to \code{'[[:space:]]+'}}
+#' \item{lines}{\code{strsplit(rmd, line)[[1]]} with \code{line='\n'}}
+#' \item{bytes}{\code{charToRaw(rmd)}}
+#' \item{words}{\code{strsplit(rmd, word)[[1]]} with \code{word='[[:space:]]+'}}
 #' \item{characters}{\code{strsplit(rmd, '')[[1]]}}
-#' \item{non-whitespace characters}{\code{strsplit(gsub(space, '', rmd), '')[[1]]} with \code{space} equal to \code{'[[:space:]]'}}
+#' \item{non-whitespace characters}{\code{strsplit(gsub(space, '', rmd), '')[[1]]} with \code{space='[[:space:]]'}}
 #' }
 #' 
-#' This is repeated for the text without code chunks. Code chunks are deleted with \code{gsub('```\\\{.*?```', '', rmd)}.
+#' If \code{txtcount} is used then code chunks are deleted with \code{gsub('```\\\{.*?```', '', rmd)} before counting.
 #' 
 #' @return a data frame with following elements
 #' \describe{
-#' \item{file}{basename of a file}
-#' \item{lines}{number of lines excluding code chunks} (\code{wc -l})
-#' \item{words}{number of words excluding code chunks} (\code{wc -w})
-#' \item{bytes}{number of bytes excluding code chunks} (\code{wc -c})
-#' \item{chars}{number of characters excluding code chunks} (\code{wc -m})
-#' \item{nonws}{number of non-whitespace characters excluding code chunks}
-#' \item{path}{path of a file}
+#' \item{file}{basename of file}
+#' \item{lines}{number of lines} 
+#' \item{words}{number of words}
+#' \item{bytes}{number of bytes}
+#' \item{chars}{number of characters}
+#' \item{nonws}{number of non-whitespace characters}
+#' \item{path}{path of file}
 #' }
 #' 
 #' @importFrom knitr current_input
@@ -47,8 +48,8 @@
 #' files <- system.file('rmarkdown/rstudio_pdf.Rmd', package="rmdwc")
 #' rmdcount(files)
 #' # count including code chunks
-#' rmdcount(files, exclude='')
-#' # count for a set of files
+#' txtcount(files) # or rmdcount(files, exclude='')
+#' # count for a set of R Markdown docs
 #' files <- list.files(path=system.file('rmarkdown', package="rmdwc"), 
 #'                     pattern="*.Rmd", full.names=TRUE)
 #' rmdcount(files)
