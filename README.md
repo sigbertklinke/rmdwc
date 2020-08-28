@@ -6,7 +6,8 @@ If you are using R Markdown documents then you have sometimes restrictions about
 # Count the number of words, number of characters or non-whitespace characters of files
 library("rmdwc")
 files <- system.file('rmarkdown/rstudio_pdf.Rmd', package="rmdwc")
-rmdcount(files)
+rmdcount(files) # exclude code chunks
+txtcount(files) # include code chunks
 # Within a R Markdown document in a code chunk
 # ```{r}
 # library("rmdwc")
