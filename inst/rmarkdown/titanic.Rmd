@@ -1,0 +1,58 @@
+---
+title: "Survival of passengers on the Titanic"
+author: 
+- name: "Sigbert Klinke" 
+  email: sigbert@hu-berlin.de
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    includes:
+      before_body: header_sk.html    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Note: The descriptions has been taken from R.
+
+## Description
+
+This data set provides information on the fate of passengers on the fatal maiden voyage of the ocean liner ‘Titanic’, summarized according to economic status (class), sex, age and survival.
+
+## Usage
+
+```{r}
+Titanic
+```
+
+## Format
+
+A 4-dimensional array resulting from cross-tabulating 2201 observations on 4 variables. The variables and their levels are as follows:
+
+**Variable** | **Levels**
+-------------|---------------------------------------------------------------------------------------
+Class        | 1st, 2nd, 3rd, Crew
+Sex          | Male, Female
+Age   	     | Child, Adult	
+Survived     | No, Yes
+
+## Source
+
+* Dawson, Robert J. MacG. (1995), The ‘Unusual Episode’ Data Revisited. Journal of Statistics Education, 3. https://doi.org/10.1080/10691898.1995.11910499
+
+The source provides a data set recording class, sex, age, and survival status for each person on board of the Titanic, and is based on data originally collected by the British Board of Trade and reprinted in:
+
+* British Board of Trade (1990), Report on the Loss of the ‘Titanic’ (S.S.). British Board of Trade Inquiry Report (reprint). Gloucester, UK: Allan Sutton Publishing. https://www.titanicinquiry.org/BOTInq/BOTReport/botRep01.php
+
+## Full data set
+
+To create a data set with all 2201 observations and 4 variables run
+
+```{r}
+titanic <- as.data.frame(Titanic)
+index   <- rep(1:nrow(titanic), titanic$Freq)
+titanic <- titanic[index, -5] # exclude Freq
+str(titanic)
+```

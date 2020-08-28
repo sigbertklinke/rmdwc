@@ -1,0 +1,14 @@
+---
+title: "gettext"
+author: 
+- name: "Sigbert Klinke" 
+  email: sigbert@hu-berlin.de
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{gettext} 
+  %\VignetteEngine{knitr::rmarkdown} 
+  \usepackage[utf8]{inputenc} 
+---

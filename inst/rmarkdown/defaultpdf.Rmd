@@ -1,0 +1,15 @@
+---
+title: "Untitled"
+author: "Sigbert Klinke"
+date: "4 März 2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+Examples, e.g. integrating a plot or other output
+...

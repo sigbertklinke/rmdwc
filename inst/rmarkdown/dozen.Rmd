@@ -1,0 +1,48 @@
+---
+title: "Datasaurus Dozen data"
+author: 
+- name: "Sigbert Klinke" 
+  email: sigbert@hu-berlin.de
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    includes:
+      before_body: header_sk.html    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Note: The descriptions has been taken from R.
+
+## Description
+
+A dataset demonstrating the utility of visualization. These 13 datasets are equal in standard measures: mean, standard deviation, and Pearson's correlation.
+
+## Usage
+
+```{r}
+library("datasauRus")
+head(datasaurus_dozen)
+```
+
+## Format
+
+A data frame with 1846 rows and 3 variables:
+
+**Variable** | **Meaning**
+-------------|-----------------------------------------------------------------------------------------
+dataset      | indicates which dataset the data are from
+x            | x-values
+y            | y-values
+
+```{r, echo=FALSE}
+library("lattice")
+xyplot(y~x|dataset, data=datasaurus_dozen, pch=19, cex=0.5)
+``` 
+
+## Source
+
+* Matejka, J., & Fitzmaurice, G. (2017). Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing. CHI 2017 Conference proceedings: ACM SIGCHI Conference on Human Factors in Computing Systems. Retrieved from https://www.autodeskresearch.com/publications/samestats.

@@ -1,0 +1,56 @@
+---
+title: "Life expectancy 1992"
+author: 
+- name: "Sigbert Klinke" 
+  email: sigbert@hu-berlin.de
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    includes:
+      before_body: header_sk.html    
+---
+  
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Description
+
+Data execerpt of General Social Survey in 1992.
+
+## Usage
+
+```{r}
+library("rio")
+#x <- import("https://shinyapps.wiwi.hu-berlin.de/u/stat/data/gss92.sav")
+#head(x)
+```
+
+## Format
+
+The data set contains 1500 observations and 49 variables. The following exercept describes only variables used in the lecture Data analysis I+II.
+
+**Variable** | **Meaning**
+-------------|-----------------------------------------------------------------------------------------
+age          | Age of Respondent
+sex          | Respondent's Sex (1=Male, 2=Female)
+educ         | Highest Year of School Completed 
+sibs         | Number of brothers and sisters
+life         | Is life dull (=1), routine (=2) or exciting (=3)
+speduc       | Highest Year of School Completed by Spouse
+paeduc       | Highest Year of School Completed by Father
+maeduc       | Highest Year of School Completed by Mother
+tvhours      | Hours of Television Watched
+wrkstat      | Labor Force Status (1=Working fulltime)
+hrs1         | Number of Hours Worked Last Week
+rincmdol     | Respondent's Income (in US\$)
+wifeduc      | Wife: number of years of education
+husbeduc     | Husband: number of years of education
+wifeft       | Wife employed full time (0=No, 1=Yes)
+happy        | General happiness (1=Very Happy, 2=Pretty happy, 3=Not too happy, NA=NAP/DK/NA)
+hapmar       | Happiness of marriage (coding as in happy)
+
+## Source
+
+* Norušis, Marija J. IBM SPSS Statistics 19: Guide to Data Analysis. Internat. ed. Upper Saddle River: Prentice Hall, 2011. http://www.norusis.com/book_DA_v19.php

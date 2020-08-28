@@ -1,0 +1,69 @@
+---
+title: "Concrete"
+author: 
+- name: "Sigbert Klinke" 
+  email: sigbert@hu-berlin.de
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    includes:
+      before_body: header_sk.html    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Description
+
+Data about concrete mixtures and resulting properties (Slump, Flow and Strength). Input variables are:
+
+__Water content__ 
+: ACI 211.1 (Standard practice for selecting proportions for normal, heavyweight, and mass concrete) assumes that, for a given maximum size of coarse aggregate, the slump or consistency of concrete is a direct function of the water content; i.e., within limits it is independent of other factors such as aggregate grading and cement content.
+
+__Superplasticizer__
+: When the water content of a concrete mixture is held constant, the addition of a superplasticizer will increase the consistency.
+
+__Pozzolanic admixtures__
+: Pozzolanic admixtures tend to improve the cohesiveness of concrete. Fly ash, when used as a partial replacement for fine aggregate, generally increases the consistency at a given water content.
+
+__Cement content__
+: Concretes containing a very high proportion of cement show excellent cohesiveness, but tend to be sticky. At a given water content, a considerable lowering of the cement content tends to produce harsh mixtures, with poor cohesiveness.
+
+__Aggregate characteristics__
+: Very fine sands require more water for a given consistency; alternatively, they will produce harsh and unworkable mixtures at a water content that might have been adequate with coarser sands. Also, the particle size of coarse aggregate influences the water requirement for a given consistency.
+
+## Usage
+
+```{r}
+library("rio")
+#concrete <- import("https://shinyapps.hu-berlin.de/u/stat/data/concrete.sav")
+#head(concrete)
+```
+
+## Format
+
+The data set contains data of 237 children between 11 and 20 years.
+
+**Variable** | **Meaning**
+-------------|-----------------------------------------------------------------------------------------
+Cement       | Cement (in kg/m$^3$ concrete)
+Slag         | Slag (in kg/m$^3$ concrete)
+Flyash       | Fly ash (in kg/m$^3$ concrete)
+Water        | Water (in kg/m$^3$ concrete)
+SP           | Superplasticizer (in kg/m$^3$ concrete)
+CoarseAggr   | Coarse sand (in kg/m$^3$ concrete)
+FineAggr     | Fine sand (in kg/m$^3$ concrete)
+Slump        | Slump (in cm)
+Flow         | Flow (in cm)
+Strength     | 28day compressive strength (in Megapascal) 
+
+## Source
+
+* [Concrete Slump Test Data Set](https://archive.ics.uci.edu/ml/datasets/Concrete+Slump+Test) from the UCI Machine Learning Repository
+
+## References
+
+* Yeh, I-Cheng (2007) Modeling slump flow of concrete using second-order regressions and 
+	artificial neural networks, Cement and Concrete Composites, Vol.29, No. 6, 474-480. https://doi.org/10.1016/j.cemconcomp.2007.02.001

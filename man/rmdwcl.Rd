@@ -4,7 +4,7 @@
 \alias{rmdwcl}
 \title{Word-, character and non-whitespace characters count for a text}
 \usage{
-rmdwcl(rmd, space = "[[:space:]]", word = "[[:space:]]+")
+rmdwcl(rmd, space = "[[:space:]]", word = "[[:space:]]+", line = "\\n")
 }
 \arguments{
 \item{rmd}{character: R Markdown document as string}
@@ -12,6 +12,8 @@ rmdwcl(rmd, space = "[[:space:]]", word = "[[:space:]]+")
 \item{space}{character: pattern to split a text at spaces (default: \code{'[[:space:]]'})}
 
 \item{word}{character: pattern to split a text at word boundaries (default: \code{'[[:space:]]+'})}
+
+\item{line}{character: pattern to split lines (default: \code{'\n'})}
 }
 \value{
 a list

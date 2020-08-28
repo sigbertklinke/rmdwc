@@ -1,0 +1,29 @@
+---
+title: "Available data sets"
+author: 
+- name: "Sigbert Klinke" 
+  email: sigbert@hu-berlin.de
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    includes:
+      before_body: header_sk.html    
+---
+
+## Data sets
+
+**Note**: Data files with the extensions supported by the [package rio](https://cran.r-project.org/web/packages/rio/vignettes/rio.html) will be served only within the HU network. If you want to provide a data file also outside the HU network then choose another file extension for your file. Currently files with the following extensions are not served outside the HU network:
+
+`arff`, `csv`, `csv.gz`, `csvy`, `dbf`, `dif`, `dta`, `feather`, `fst`, `fwf`, `json`, `mat`, `mtp`, `ods`, `por`, `psv`, `rda`, `rds`, `rec`, `sas7bdat`, `sav`, `syd`, `tsv`, `wf1`, `xls`, `xlsx`, `xml`, `xpt`, and `yml`.
+
+* [Anscombe Data](anscombe.Rmd)
+* [Boston Housing Data](bhd.Rmd)
+* [Concrete Slump Test Data Set](concrete.Rmd) - Download: [concrete.sav](concrete.sav)
+* [Current Population Survey 1978 & 1985](cps7885.Rmd) - Download: [CPS_78_85.sav](CPS_78_85.sav)
+* [Datasaurus Dozen data](dozen.Rmd)
+* [General Social Survey 1992](gss92.Rmd) - Download: [gss92.sav](gss92.sav)
+* [Life expectancy 1992](life92.Rmd) - Download: [country.sav](country.sav)
+* [Olympic Decathlon](olympic.Rmd)
+* [SAS Body Data](sas_body.Rmd) - Download: [sas_body.xls](sas_body.xls)
+* [Survival of passengers on the Titanic](titanic.Rmd)
+* [Swiss Banknote Data](banknote.Rmd)

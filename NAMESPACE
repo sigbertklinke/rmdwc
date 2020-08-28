@@ -2,4 +2,5 @@
 
 export(rmdcount)
 export(rmdwcl)
+export(txtcount)
 importFrom(knitr,current_input)

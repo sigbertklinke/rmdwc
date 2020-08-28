@@ -1,0 +1,53 @@
+---
+title: "Olypmpic Decathlon"
+author: 
+- name: "Sigbert Klinke" 
+  email: sigbert@hu-berlin.de
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    includes:
+      before_body: header_sk.html    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Note: The descriptions has been taken from R.
+
+## Description
+
+This data set gives the performances of 33 men's decathlon at the Olympic Games (1988).
+
+## Usage
+
+```{r}
+data(olympic, package="ade4")
+head(olympic$tab)
+head(olympic$score)
+```
+
+## Format
+
+`olympic` is a list of 2 components: a data frame with 33 rows and 10 columns events of the decathlon and a vector of the final points scores of the competition.
+
+**Variable** | **Meaning**
+-------------|-----------------------------------------------------------------------------------------
+tab$100      | 100 meters / 100 Meter Lauf
+tab$long     | long jump / Weitsprung
+tab$poid     | shotput / Kugelstoßen
+tab$haut     | high jump / Hochsprung
+tab$400      | 400 meters / 400 Meter Lauf
+tab$110      | 110-meter hurdles / 110 Meter Hürdenlauf
+tab$disq     | discus throw / Diskuswurf
+tab$perc     | pole vault / Stabhochsprung
+tab$jave     | javelin / Speerwurf
+tab$1500     | 1500 meters / 1500 Meter Lauf
+score        | score / Punkte
+
+## Source
+
+* Example 357 in: Hand, D.J., Daly, F., Lunn, A.D., McConway, K.J. and Ostrowski, E. (1994) A handbook of small data sets, Chapman & Hall, London. 458 p.
+* Lunn, A. D. and McNeil, D.R. (1991) Computer-Interactive Data Analysis, Wiley, New York

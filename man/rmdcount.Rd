@@ -2,9 +2,23 @@
 % Please edit documentation in R/rmdcount.R
 \name{rmdcount}
 \alias{rmdcount}
+\alias{txtcount}
 \title{Word, character and non-whitespace characters count}
 \usage{
-rmdcount(files = NULL, space = "[[:space:]]", word = "[[:space:]]+")
+rmdcount(
+  files = NULL,
+  space = "[[:space:]]",
+  word = "[[:space:]]+",
+  line = "\\n",
+  exclude = "```\\\\{.*?```"
+)
+
+txtcount(
+  files = NULL,
+  space = "[[:space:]]",
+  word = "[[:space:]]+",
+  line = "\\n"
+)
 }
 \arguments{
 \item{files}{character: file name(s)}
@@ -12,27 +26,40 @@ rmdcount(files = NULL, space = "[[:space:]]", word = "[[:space:]]+")
 \item{space}{character: pattern to split a text at spaces (default: \code{'[[:space:]]'})}
 
 \item{word}{character: pattern to split a text at word boundaries (default: \code{'[[:space:]]+'})}
+
+\item{line}{character: pattern to split lines (default: \code{'\n'})}
+
+\item{exclude}{character: pattern to exclude text parts, e.g. code chunks (default: \code{'```\\\{.*?```'})}
 }
 \value{
-a data frame wthe following elements
+a data frame with following elements
 \describe{
 \item{file}{basename of a file}
-\item{words}{number of words including code chunks}
-\item{chars}{number of characters including code chunks}
-\item{nonws}{number of non-whitespace characters including code chunks}
-\item{words_chunk}{number of words excluding code chunks}
-\item{chars_chunk}{number of characters excluding code chunks}
-\item{nonws_chunk}{number of non-whitespace characters excluding code chunks}
+\item{lines}{number of lines excluding code chunks} (\code{wc -l})
+\item{words}{number of words excluding code chunks} (\code{wc -w})
+\item{bytes}{number of bytes excluding code chunks} (\code{wc -c})
+\item{chars}{number of characters excluding code chunks} (\code{wc -m})
+\item{nonws}{number of non-whitespace characters excluding code chunks}
 \item{path}{path of a file}
 }
 }
 \description{
-Counts words, characters and non-whitespace characters in R Markdown files.
+\code{rmdcount} counts lines, words, bytes, characters and non-whitespace characters in R Markdown files excluding code chunks.
+\code{txtcount} counts lines, words, bytes, characters and non-whitespace characters in plain text files.\cr
+Note that the counts may differ a bit from unix \code{wc} and Libre Office because
+it depends on the definition of a line, a word and a character.
 }
 \details{
-It uses the following approaches to detect words, characters and non-whitespace characters. 
-
+We define:
 \describe{
+\item{Line}{the number of lines. It differs from \code{wc -l} since \code{wc} counts the number of newlines.}
+\item{Word}{it is considered to be a character or characters delimited by white space. Libre Office counts differently; see \url{https://bugs.documentfoundation.org/show_bug.cgi?id=55359}{Another Example}.}
+}
+
+We use the following approaches to detect words, characters and non-whitespace characters. 
+\describe{
+\item{lines}{\code{strsplit(rmd, line)[[1]]} with \code{line} equal to \code{'\n'}}
+\item{bytes}{\code{charToRaw(rmd)} with \code{line} equal to \code{'\n'}}
 \item{words}{\code{strsplit(rmd, word)[[1]]} with \code{word} equal to \code{'[[:space:]]+'}}
 \item{characters}{\code{strsplit(rmd, '')[[1]]}}
 \item{non-whitespace characters}{\code{strsplit(gsub(space, '', rmd), '')[[1]]} with \code{space} equal to \code{'[[:space:]]'}}
@@ -41,10 +68,21 @@ It uses the following approaches to detect words, characters and non-whitespace 
 This is repeated for the text without code chunks. Code chunks are deleted with \code{gsub('```\\\{.*?```', '', rmd)}.
 }
 \examples{
+# count excluding code chunks
 files <- system.file('rmarkdown/rstudio_pdf.Rmd', package="rmdwc")
+rmdcount(files)
+# count including code chunks
+rmdcount(files, exclude='')
+# count for a set of files
+files <- list.files(path=system.file('rmarkdown', package="rmdwc"), 
+                    pattern="*.Rmd", full.names=TRUE)
 rmdcount(files)
 # use of rmdcount() in a R Markdown document 
 if (interactive()) {
+  files <- system.file('rmarkdown/rstudio_pdf.Rmd', package="rmdwc")
   file.edit(files) # SAVE(!) the file and knit it 
 }
+# count including code chunks
+files <- system.file('rmarkdown/rstudio_pdf.Rmd', package="rmdwc")
+txtcount(files)
 }

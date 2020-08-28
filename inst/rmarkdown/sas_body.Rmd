@@ -1,0 +1,45 @@
+---
+title: "SAS Body Data"
+author: 
+- name: "Sigbert Klinke" 
+  email: sigbert@hu-berlin.de
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    includes:
+      before_body: header_sk.html    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Note: The description has been taken from SAS.
+
+## Description
+
+Data about children.
+
+## Usage
+
+```{r}
+library("rio")
+#body <- import("https://shinyapps.hu-berlin.de/u/stat/data/sas_body.xls")
+#head(body)
+```
+
+## Format
+
+The data set contains data of 237 children between 11 and 20 years.
+
+**Variable** | **Meaning**
+-------------|-----------------------------------------------------------------------------------------
+Sex          | sex of child
+Age          | age (in month)
+Height       | height (in inches, 1 inch = 0.0254 m)
+Weight       | weight (in pounds, 1 pound = 0.4536 kg)
+
+## Source
+
+* SAS online documentation V8
