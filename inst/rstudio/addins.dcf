@@ -1,0 +1,4 @@
+Name: Counts lines, word and chars
+Description: Counts lines, word and chars on the current document
+Binding: rmdcountAddin
+Interactive: false

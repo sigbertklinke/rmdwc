@@ -35,7 +35,7 @@ txtcount(
 a data frame with following elements
 \describe{
 \item{file}{basename of file}
-\item{lines}{number of lines} 
+\item{lines}{number of lines}
 \item{words}{number of words}
 \item{bytes}{number of bytes}
 \item{chars}{number of characters}
@@ -53,11 +53,13 @@ it depends on the definition of a line, a word and a character.
 We define:
 \describe{
 \item{Line}{the number of lines. It differs from unix \code{wc -l} since \code{wc} counts the number of newlines.}
-\item{Word}{it is considered to be a character or characters delimited by white space. 
-Libre Office counts differently; see \url{Another Example}{https://bugs.documentfoundation.org/show_bug.cgi?id=55359}.}
+\item{Word}{it is considered to be a character or characters delimited by white space. However,
+a "word" is in general a fuzzy concept, for example is "3.141593" a word?
+Therefore different programs may count differently, for more details see the discussion to the Libreoffice bug
+\href{https://bugs.documentfoundation.org/show_bug.cgi?id=55359}{Word count gives wrong results - Another Example} Comment 5.}
 }
 
-The following approach is used to detect lines, words, characters and non-whitespace characters. 
+The following approach is used to detect lines, words, characters and non-whitespace characters.
 \describe{
 \item{lines}{\code{strsplit(rmd, line)[[1]]} with \code{line='\n'}}
 \item{bytes}{\code{charToRaw(rmd)}}
