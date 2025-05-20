@@ -63,6 +63,7 @@
 #' }
 rmdcount <- function(files=NULL, space='[[:space:]]', word='[[:space:]]+', line="\n", exclude='```\\{.*?```') {
   if (is.null(files)) files <- knitr::current_input()
+  #browser()
   zero <- rep(0, length(files))
   dfwc <- list(file=NULL, lines=zero, words=zero, bytes=zero, chars=zero, nonws=zero, 
                path=NULL)
